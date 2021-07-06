@@ -25,10 +25,10 @@ class _ChannelPageState extends State<ChannelPage> {
 
   bool _isSending = false;
 
-  getDestinationWallet() async {
-    var mem = await widget.channel.queryMembers();
-    var destId = mem.members[1].user!.extraData['wallet_id'] as String;
-    var sourceId = mem.members[0].user!.extraData['wallet_id'] as String;
+  getWallets() async {
+    var members = await widget.channel.queryMembers();
+    var destId = members.members[1].user!.extraData['wallet_id'] as String;
+    var sourceId = members.members[0].user!.extraData['wallet_id'] as String;
 
     _sourceWalletId = sourceId;
     _destinationWalletId = destId;
@@ -37,7 +37,7 @@ class _ChannelPageState extends State<ChannelPage> {
   @override
   void initState() {
     super.initState();
-    getDestinationWallet();
+    getWallets();
   }
 
   Future<void> _onPaymentRequestPressed() async {

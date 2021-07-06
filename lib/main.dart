@@ -12,12 +12,15 @@ void main() async {
     logLevel: Level.OFF,
   );
 
+  final String _myWalletId = 'ewallet_3d63cc520dff85b043914de569390fd1';
+
   await client.connectUser(
     User(
       id: USER_ID,
       extraData: {
-        'image':
-            'https://local.getstream.io:9000/random_png/?id=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiZGVsaWNhdGUtZmlyZS02In0.Yfdnsfkt48g1xv3I77mBjlVISnLwMyVUFobBynTf6Jc&name=delicate-fire-6',
+        'wallet_id': _myWalletId,
+        'name': 'Souvik Biswas',
+        'image': 'https://i.pravatar.cc/150?img=8',
       },
     ),
     USER_TOKEN,
@@ -45,7 +48,7 @@ class MyApp extends StatelessWidget {
         );
       },
       debugShowCheckedModeBanner: false,
-      home: ChannelListPage(),
+      home: ChannelListPage(channel),
     );
   }
 }

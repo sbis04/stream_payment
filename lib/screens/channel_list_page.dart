@@ -4,6 +4,10 @@ import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 import 'channel_page.dart';
 
 class ChannelListPage extends StatelessWidget {
+  final Channel channel;
+
+  const ChannelListPage(this.channel);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +20,7 @@ class ChannelListPage extends StatelessWidget {
           sort: [SortOption('last_message_at')],
           pagination: PaginationParams(limit: 30),
           channelWidget: Builder(
-            builder: (context) => ChannelPage(),
+            builder: (context) => ChannelPage(channel),
           ),
         ),
       ),

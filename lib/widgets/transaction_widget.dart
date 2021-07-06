@@ -5,12 +5,11 @@ import 'package:stream_payment/screens/detail_page.dart';
 
 class TransactionWidget extends StatelessWidget {
   const TransactionWidget({
-    Key? key,
     required this.transaction,
     required this.destWalletAddress,
     required this.amount,
     required this.status,
-  }) : super(key: key);
+  });
 
   final Transfer transaction;
   final String destWalletAddress;

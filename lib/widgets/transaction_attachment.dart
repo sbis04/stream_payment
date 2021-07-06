@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 class TransactionAttachment extends StatelessWidget {
   final int amount;
 
-  const TransactionAttachment({
-    Key? key,
-    required this.amount,
-  }) : super(key: key);
+  const TransactionAttachment({required this.amount});
 
   @override
   Widget build(BuildContext context) {

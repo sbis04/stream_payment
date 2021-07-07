@@ -2,25 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:stream_payment/res/pallet.dart';
 
-class TransactionPage extends StatefulWidget {
+class TransactionPage extends StatelessWidget {
   final String destinationWalletAddress;
 
-  const TransactionPage({required this.destinationWalletAddress});
+  TransactionPage({required this.destinationWalletAddress});
 
-  @override
-  _TransactionPageState createState() => _TransactionPageState();
-}
-
-class _TransactionPageState extends State<TransactionPage> {
-  late final TextEditingController _amountTextController;
-  late final String _destinationWalletAddress;
-
-  @override
-  void initState() {
-    super.initState();
-    _destinationWalletAddress = widget.destinationWalletAddress;
-    _amountTextController = TextEditingController();
-  }
+  final TextEditingController _amountTextController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +48,7 @@ class _TransactionPageState extends State<TransactionPage> {
                         ),
                         SizedBox(height: 4),
                         Text(
-                          _destinationWalletAddress,
+                          destinationWalletAddress,
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 14.0,

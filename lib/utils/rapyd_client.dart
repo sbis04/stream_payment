@@ -24,7 +24,7 @@ class RapydClient {
 
   Map<String, String> _generateHeader({
     required String method,
-    required String walletEndpoint,
+    required String endpoint,
     String body = '',
   }) {
     int unixTimetamp = DateTime.now().millisecondsSinceEpoch;
@@ -32,13 +32,8 @@ class RapydClient {
 
     var salt = _generateSalt();
 
-    var toSign = method +
-        walletEndpoint +
-        salt +
-        timestamp +
-        _accessKey +
-        _secretKey +
-        body;
+    var toSign =
+        method + endpoint + salt + timestamp + _accessKey + _secretKey + body;
 
     var keyEncoded = ascii.encode(_secretKey);
     var toSignEncoded = ascii.encode(toSign);
@@ -70,7 +65,7 @@ class RapydClient {
 
     final headers = _generateHeader(
       method: method,
-      walletEndpoint: walletEndpoint,
+      endpoint: walletEndpoint,
     );
 
     try {
@@ -110,7 +105,7 @@ class RapydClient {
 
     final headers = _generateHeader(
       method: method,
-      walletEndpoint: transferEndpoint,
+      endpoint: transferEndpoint,
       body: data,
     );
 
@@ -152,7 +147,7 @@ class RapydClient {
 
     final headers = _generateHeader(
       method: method,
-      walletEndpoint: responseEndpoint,
+      endpoint: responseEndpoint,
       body: data,
     );
 

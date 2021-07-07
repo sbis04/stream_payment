@@ -12,7 +12,8 @@ void main() async {
     logLevel: Level.OFF,
   );
 
-  final String _myWalletId = 'ewallet_3d63cc520dff85b043914de569390fd1';
+  const String _myWalletId = 'ewallet_3d63cc520dff85b043914de569390fd1';
+  const USER_ID = 'sbis04';
 
   await client.connectUser(
     User(

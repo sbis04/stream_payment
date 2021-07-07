@@ -151,11 +151,9 @@ class _ChannelPageState extends State<ChannelPage> {
                 return msg;
               },
               attachmentThumbnailBuilders: {
-                'payment': (context, attachment) {
-                  return TransactionAttachment(
-                    amount: attachment.extraData['amount'] as int,
-                  );
-                }
+                'payment': (context, attachment) => TransactionAttachment(
+                      amount: attachment.extraData['amount'] as int,
+                    )
               },
               actions: [
                 IconButton(

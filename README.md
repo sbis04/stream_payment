@@ -1,8 +1,8 @@
-# Peer-to-peer payment integration to a messaging app using Flutter
+# Peer-to-peer payment integration to a messaging app using Flutter 💰
 
 This project shows how to integrate a peer-to-peer payment solution to your [Stream Chat](https://getstream.io/) using [Rapyd's](https://www.rapyd.net/) Wallet API with the help of Flutter.
 
-## Project structure
+## Project structure 🏗️
 
 The `lib` directory contains the Dart code of the Flutter app, it is distributed in the following directories:
 
@@ -12,7 +12,7 @@ The `lib` directory contains the Dart code of the Flutter app, it is distributed
 * **models:** contains the model classes for easy storing of API data
 * **res:** contains the color palette used in the app
 
-## Requirements
+## Requirements 🧪
 
 Some prerequisites to run this project:
 
@@ -22,7 +22,7 @@ Some prerequisites to run this project:
 
 * **Setup Rapyd account:** You can sign up for a Rapyd account [here](https://dashboard.rapyd.net/sign-up), and enable their Sandbox mode.
 
-## Usage
+## Usage 👨‍💻
 
 For building and running this project locally, follow the steps below:
 
@@ -64,7 +64,7 @@ For building and running this project locally, follow the steps below:
   flutter run
   ```
 
-## License
+## License 📝
 
 Copyright (c) 2021 Souvik Biswas
 

@@ -2,6 +2,8 @@
 
 This project shows how to integrate a peer-to-peer payment solution to your [Stream Chat](https://getstream.io/) using [Rapyd's](https://www.rapyd.net/) Wallet API with the help of Flutter.
 
+![App in action](screenshots/final_app.gif)
+
 ## Project structure 🏗️
 
 The `lib` directory contains the Dart code of the Flutter app, it is distributed in the following directories:

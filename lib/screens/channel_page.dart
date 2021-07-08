@@ -85,6 +85,38 @@ class _ChannelPageState extends State<ChannelPage> {
     );
   }
 
+  Future<Message> _performTransaction(Message msg) async {
+    if (msg.attachments.isNotEmpty &&
+        msg.attachments[0].extraData['amount'] != null) {
+      setState(() {
+        _isSending = true;
+      });
+
+      int amount = msg.attachments[0].extraData['amount'] as int;
+
+      var transactionInfo = await _rapydClient.transferMoney(
+        amount: amount,
+        sourceWallet: _sourceWalletId,
+        destinationWallet: _destinationWalletId,
+      );
+
+      var updatedInfo = await _rapydClient.transferResponse(
+          id: transactionInfo!.data.id, response: 'accept');
+
+      msg.attachments[0] = Attachment(
+        type: 'payment',
+        uploadState: UploadState.success(),
+        extraData: updatedInfo!.toJson(),
+      );
+
+      setState(() {
+        _isSending = false;
+      });
+    }
+
+    return msg;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -119,37 +151,7 @@ class _ChannelPageState extends State<ChannelPage> {
             ),
             MessageInput(
               key: _messageInputKey,
-              preMessageSending: (msg) async {
-                if (msg.attachments.isNotEmpty &&
-                    msg.attachments[0].extraData['amount'] != null) {
-                  setState(() {
-                    _isSending = true;
-                  });
-
-                  int amount = msg.attachments[0].extraData['amount'] as int;
-
-                  var transactionInfo = await _rapydClient.transferMoney(
-                    amount: amount,
-                    sourceWallet: _sourceWalletId,
-                    destinationWallet: _destinationWalletId,
-                  );
-
-                  var updatedInfo = await _rapydClient.transferResponse(
-                      id: transactionInfo!.data.id, response: 'accept');
-
-                  msg.attachments[0] = Attachment(
-                    type: 'payment',
-                    uploadState: UploadState.success(),
-                    extraData: updatedInfo!.toJson(),
-                  );
-
-                  setState(() {
-                    _isSending = false;
-                  });
-                }
-
-                return msg;
-              },
+              preMessageSending: (msg) => _performTransaction(msg),
               attachmentThumbnailBuilders: {
                 'payment': (context, attachment) => TransactionAttachment(
                       amount: attachment.extraData['amount'] as int,

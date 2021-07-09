@@ -47,3 +47,4 @@ app.*.map.json
 
 # Stream and Rapyd secrets
 lib/secrets.dart
+.gitsecret/keys/random_seed
